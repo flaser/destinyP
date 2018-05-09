@@ -5,11 +5,17 @@ target := destiny
 
 # define tool chain
 CXX := g++
-RM := rm -f
+ifeq ($(OS),Windows_NT)
+	RM := del /Q /F 2>nul
+	MD := -mkdir
+else
+	RM := rm -f
+	MD := mkdir -p	
+endif
 
 # define build options
 # compile options
-CXXFLAGS := -Wall 
+CXXFLAGS := -Wall -fopenmp
 # link options
 LDFLAGS :=
 # link librarires
@@ -34,7 +40,7 @@ dbg: DBG += -ggdb -g #-DNVSIM3DDEBUG=1
 dbg: dir $(target)
 
 dir:
-	mkdir -p $(OUTDIR)
+	@$(MD) $(OUTDIR)
 
 $(target): $(OBJ)
 	$(CXX) $(LDFLAGS) $^ $(LDLIBS) -o $@
