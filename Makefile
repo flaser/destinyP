@@ -17,7 +17,7 @@ endif
 # compile options
 CXXFLAGS := -Wall -fopenmp
 # link options
-LDFLAGS :=
+LDFLAGS := -fopenmp
 # link librarires
 LDLIBS :=
 
