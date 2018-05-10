@@ -1,7 +1,7 @@
 # Non-volatile memory simulator
 
 #target := tsvtest
-target := destiny
+target := destinyP
 
 # define tool chain
 CXX := g++
